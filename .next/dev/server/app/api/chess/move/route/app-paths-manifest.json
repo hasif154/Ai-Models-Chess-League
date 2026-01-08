@@ -1,0 +1,3 @@
+{
+  "/api/chess/move/route": "app/api/chess/move/route.js"
+}

@@ -1,0 +1,5 @@
+{
+  "/api/chess/commentary/route": "app/api/chess/commentary/route.js",
+  "/api/chess/move/route": "app/api/chess/move/route.js",
+  "/page": "app/page.js"
+}
