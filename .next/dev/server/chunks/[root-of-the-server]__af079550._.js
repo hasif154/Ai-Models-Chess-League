@@ -53,6 +53,11 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f
 async function POST(req) {
     const { apiKeys, fen, history } = await req.json();
     const apiKey = apiKeys.groq;
+    if (!apiKey) {
+        return __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
+            commentary: "Waiting for the next exchange..."
+        });
+    }
     const baseUrl = "https://api.groq.com/openai/v1";
     const systemPrompt = `You are a brutal, cynical chess commentator for the "AI Chess League".
 Current FEN: ${fen}
@@ -84,14 +89,23 @@ Output ONLY a JSON object:
                 }
             })
         });
+        if (!response.ok) {
+            return __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
+                commentary: "The tension is rising, but I'm speechless."
+            });
+        }
         const data = await response.json();
+        if (!data.choices?.[0]?.message?.content) {
+            throw new Error("Invalid response from Groq");
+        }
         const content = JSON.parse(data.choices[0].message.content);
-        return __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json(content);
-    } catch (error) {
         return __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
-            error: error.message
-        }, {
-            status: 500
+            commentary: content.commentary || "An interesting development, to say the least."
+        });
+    } catch (error) {
+        console.error("Commentary API Error:", error);
+        return __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
+            commentary: "The players are locked in a silent struggle."
         });
     }
 }

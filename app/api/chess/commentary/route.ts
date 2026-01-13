@@ -4,6 +4,11 @@ export async function POST(req: NextRequest) {
     const { apiKeys, fen, history } = await req.json();
 
     const apiKey = apiKeys.groq;
+
+    if (!apiKey) {
+        return NextResponse.json({ commentary: "Waiting for the next exchange..." });
+    }
+
     const baseUrl = "https://api.groq.com/openai/v1";
 
     const systemPrompt = `You are a brutal, cynical chess commentator for the "AI Chess League".
@@ -31,11 +36,22 @@ Output ONLY a JSON object:
             }),
         });
 
-        const data = await response.json();
-        const content = JSON.parse(data.choices[0].message.content);
+        if (!response.ok) {
+            return NextResponse.json({ commentary: "The tension is rising, but I'm speechless." });
+        }
 
-        return NextResponse.json(content);
+        const data = await response.json();
+
+        if (!data.choices?.[0]?.message?.content) {
+            throw new Error("Invalid response from Groq");
+        }
+
+        const content = JSON.parse(data.choices[0].message.content);
+        return NextResponse.json({
+            commentary: content.commentary || "An interesting development, to say the least."
+        });
     } catch (error: any) {
-        return NextResponse.json({ error: error.message }, { status: 500 });
+        console.error("Commentary API Error:", error);
+        return NextResponse.json({ commentary: "The players are locked in a silent struggle." });
     }
 }

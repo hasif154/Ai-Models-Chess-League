@@ -8,84 +8,90 @@ interface ModelSelectionProps {
 }
 
 const GROQ_MODELS = [
-    { id: "llama-3.3-70b-versatile", name: "Llama 3.3 70B (Groq)" },
-    { id: "llama-3.1-8b-instant", name: "Llama 3.1 8B (Groq)" },
-    { id: "mixtral-8x7b-32768", name: "Mixtral 8x7B (Groq)" },
+    { id: "llama-3.3-70b-versatile", name: "Llama 3.3 70B", provider: "Groq", icon: "🦙", speed: "Fast" },
+    { id: "llama-3.1-8b-instant", name: "Llama 3.1 8B", provider: "Groq", icon: "🦙", speed: "Instant" },
+    { id: "mixtral-8x7b-32768", name: "Mixtral 8x7B", provider: "Groq", icon: "🔀", speed: "Fast" },
 ];
 
 const OPENROUTER_MODELS = [
-    { id: "google/gemini-2.0-flash-exp:free", name: "Gemini 2.0 Flash (Free)" },
-    { id: "anthropic/claude-3.5-sonnet", name: "Claude 3.5 Sonnet" },
-    { id: "openai/gpt-4o", name: "GPT-4o" },
+    { id: "google/gemini-2.0-flash-exp:free", name: "Gemini 2.0", provider: "Google", icon: "✨", speed: "Fast" },
+    { id: "anthropic/claude-3.5-sonnet", name: "Claude 3.5", provider: "Anthropic", icon: "🎭", speed: "Premium" },
+    { id: "openai/gpt-4o", name: "GPT-4o", provider: "OpenAI", icon: "🧠", speed: "Premium" },
 ];
 
 export default function ModelSelection({ apiKeys, onSubmit }: ModelSelectionProps) {
     const availableModels = [...GROQ_MODELS];
-    if (apiKeys.openrouter) {
-        availableModels.push(...OPENROUTER_MODELS);
-    }
+    if (apiKeys.openrouter) availableModels.push(...OPENROUTER_MODELS);
 
     const [model1, setModel1] = useState(availableModels[0].id);
     const [model2, setModel2] = useState(availableModels[1]?.id || availableModels[0].id);
 
-    const handleSubmit = () => {
-        onSubmit(model1, model2);
-    };
+    const getModelInfo = (id: string) => [...GROQ_MODELS, ...OPENROUTER_MODELS].find(m => m.id === id);
+    const m1 = getModelInfo(model1);
+    const m2 = getModelInfo(model2);
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen p-4">
-            <div className="w-full max-w-4xl space-y-12 text-center">
-                <div className="space-y-2">
-                    <h1 className="text-4xl font-bold tracking-tighter text-white uppercase italic">
-                        AI CHESS LEAGUE
+        <div className="relative flex flex-col items-center justify-center min-h-screen p-4 bg-pattern">
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute top-1/3 left-1/4 w-72 h-72 bg-white/[0.02] rounded-full blur-3xl" />
+            </div>
+
+            <div className="relative w-full max-w-5xl space-y-12 text-center">
+                <div className="space-y-3">
+                    <h1 className="text-5xl font-black tracking-tighter text-white uppercase italic text-glow">
+                        Choose Your Fighters
                     </h1>
-                    <p className="text-zinc-500 uppercase tracking-widest text-sm">Choose AI model</p>
+                    <p className="text-zinc-500 text-sm">Select AI models for an epic chess battle</p>
                 </div>
 
-                <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
-                    <div className="flex-1 w-full space-y-4">
-                        <label className="block text-xs text-zinc-500 uppercase tracking-widest text-left">
-                            AI Model 1 (White)
-                        </label>
-                        <select
-                            value={model1}
-                            onChange={(e) => setModel1(e.target.value)}
-                            className="w-full bg-zinc-900 border border-zinc-800 rounded-none p-6 text-white text-lg focus:outline-none focus:border-white appearance-none cursor-pointer"
-                        >
-                            {availableModels.map((m) => (
-                                <option key={m.id} value={m.id}>
-                                    {m.name}
-                                </option>
-                            ))}
+                <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
+                    <div className="w-full lg:w-80 player-card player-card-white p-6 space-y-6">
+                        <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center">
+                                <svg className="w-5 h-5 text-black" viewBox="0 0 24 24" fill="currentColor">
+                                    <circle cx="12" cy="8" r="4" /><path d="M12 14c-6 0-8 3-8 6v2h16v-2c0-3-2-6-8-6z" />
+                                </svg>
+                            </div>
+                            <div className="text-left">
+                                <div className="text-xs text-zinc-500 uppercase tracking-widest">Player 1</div>
+                                <div className="text-sm font-semibold text-white">White Pieces</div>
+                            </div>
+                        </div>
+                        <select value={model1} onChange={(e) => setModel1(e.target.value)} className="premium-select w-full p-4 text-white text-sm">
+                            {availableModels.map((m) => <option key={m.id} value={m.id}>{m.icon} {m.name}</option>)}
                         </select>
+                        {m1 && <div className="flex items-center justify-between text-xs"><span className="text-zinc-500">{m1.provider}</span><span className={`px-2 py-0.5 rounded-full text-[10px] ${m1.speed === 'Instant' ? 'bg-emerald-500/20 text-emerald-400' : m1.speed === 'Fast' ? 'bg-blue-500/20 text-blue-400' : 'bg-purple-500/20 text-purple-400'}`}>{m1.speed}</span></div>}
                     </div>
 
-                    <div className="text-4xl font-bold italic text-zinc-800 hidden md:block">VS</div>
+                    <div className="vs-badge shrink-0">VS</div>
 
-                    <div className="flex-1 w-full space-y-4">
-                        <label className="block text-xs text-zinc-500 uppercase tracking-widest text-left">
-                            AI Model 2 (Black)
-                        </label>
-                        <select
-                            value={model2}
-                            onChange={(e) => setModel2(e.target.value)}
-                            className="w-full bg-zinc-900 border border-zinc-800 rounded-none p-6 text-white text-lg focus:outline-none focus:border-white appearance-none cursor-pointer"
-                        >
-                            {availableModels.map((m) => (
-                                <option key={m.id} value={m.id}>
-                                    {m.name}
-                                </option>
-                            ))}
+                    <div className="w-full lg:w-80 player-card player-card-black p-6 space-y-6">
+                        <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center border border-zinc-700">
+                                <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+                                    <circle cx="12" cy="8" r="4" /><path d="M12 14c-6 0-8 3-8 6v2h16v-2c0-3-2-6-8-6z" />
+                                </svg>
+                            </div>
+                            <div className="text-left">
+                                <div className="text-xs text-zinc-500 uppercase tracking-widest">Player 2</div>
+                                <div className="text-sm font-semibold text-white">Black Pieces</div>
+                            </div>
+                        </div>
+                        <select value={model2} onChange={(e) => setModel2(e.target.value)} className="premium-select w-full p-4 text-white text-sm">
+                            {availableModels.map((m) => <option key={m.id} value={m.id}>{m.icon} {m.name}</option>)}
                         </select>
+                        {m2 && <div className="flex items-center justify-between text-xs"><span className="text-zinc-500">{m2.provider}</span><span className={`px-2 py-0.5 rounded-full text-[10px] ${m2.speed === 'Instant' ? 'bg-emerald-500/20 text-emerald-400' : m2.speed === 'Fast' ? 'bg-blue-500/20 text-blue-400' : 'bg-purple-500/20 text-purple-400'}`}>{m2.speed}</span></div>}
                     </div>
                 </div>
 
-                <button
-                    onClick={handleSubmit}
-                    className="mt-12 px-12 py-4 bg-white text-black font-bold uppercase tracking-widest hover:bg-zinc-200 transition-colors"
-                >
-                    Start Match
+                <button onClick={() => onSubmit(model1, model2)} className="premium-button py-4 px-12 text-sm">
+                    <span className="relative z-10 flex items-center justify-center gap-3">
+                        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+                        Start Match
+                    </span>
                 </button>
+
+                {!apiKeys.openrouter && <p className="text-[11px] text-zinc-600">Add OpenRouter API key to unlock GPT-4o, Claude, and Gemini.</p>}
             </div>
         </div>
     );

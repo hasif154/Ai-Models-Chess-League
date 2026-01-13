@@ -2,204 +2,362 @@
 /// <reference types="@react-three/fiber" />
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, PerspectiveCamera, ContactShadows, Environment, Float } from "@react-three/drei";
-import { useState, useMemo, useRef, useEffect } from "react";
+import { OrbitControls, PerspectiveCamera, ContactShadows, Environment } from "@react-three/drei";
+import { useMemo, useRef, Suspense } from "react";
 import * as THREE from "three";
-import { Chess, Square } from "chess.js";
+import { Chess } from "chess.js";
 
 interface Scene3dProps {
     fen: string;
     lastMove?: string;
 }
 
-const SQUARE_SIZE = 1;
-const BOARD_SIZE = 8;
+// Map piece positions
+function fenToBoard(fen: string) {
+    const chess = new Chess(fen);
+    return chess.board();
+}
 
 export default function Scene3d({ fen, lastMove }: Scene3dProps) {
-    const board = useMemo(() => {
-        const c = new Chess(fen);
-        return c.board();
-    }, [fen]);
+    const board = useMemo(() => fenToBoard(fen), [fen]);
 
     return (
         <div className="w-full h-full">
-            <Canvas shadows dpr={[1, 2]}>
-                <PerspectiveCamera makeDefault position={[0, 8, 8]} fov={45} />
+            <Canvas shadows dpr={[1, 2]} gl={{ antialias: true, alpha: false }}>
+                {/* Low angle camera matching reference */}
+                <PerspectiveCamera makeDefault position={[0, 5, 11]} fov={42} />
                 <OrbitControls
                     enablePan={false}
                     maxPolarAngle={Math.PI / 2.1}
-                    minDistance={8}
-                    maxDistance={15}
+                    minPolarAngle={Math.PI / 8}
+                    minDistance={11}
+                    maxDistance={20}
                     autoRotate={false}
+                    enableDamping
+                    dampingFactor={0.05}
+                    target={[0, 0.5, 0]}
                 />
 
-                <color attach="background" args={["#050505"]} />
-                <fog attach="fog" args={["#050505", 10, 20]} />
+                {/* Pure black background like reference */}
+                <color attach="background" args={["#0a0a0a"]} />
 
-                <ambientLight intensity={0.2} />
-                <spotLight
-                    position={[10, 15, 10]}
-                    angle={0.3}
-                    penumbra={1}
-                    intensity={200}
+                {/* Soft ambient lighting */}
+                <ambientLight intensity={0.5} />
+
+                {/* Main front-top light for even illumination like reference */}
+                <directionalLight
+                    position={[8, 15, 12]}
+                    intensity={1.8}
                     castShadow
-                    shadow-mapSize={[1024, 1024]}
+                    shadow-mapSize={[2048, 2048]}
+                    shadow-bias={-0.0001}
                 />
-                <pointLight position={[-10, 5, -10]} intensity={50} color="#333" />
 
-                <Board />
+                {/* Soft fill from left */}
+                <directionalLight
+                    position={[-10, 10, 5]}
+                    intensity={0.6}
+                    color="#f8f8ff"
+                />
 
-                {board.flat().map((cell: any, i: number) => {
-                    if (!cell) return null;
-                    const x = (i % 8) - 3.5;
-                    const z = Math.floor(i / 8) - 3.5;
-                    return (
-                        <Piece
-                            key={`${cell.type}-${cell.color}-${i}`}
-                            type={cell.type}
-                            color={cell.color}
-                            position={[x, 0, z]}
-                        />
-                    );
-                })}
+                {/* Back rim light for depth */}
+                <pointLight position={[0, 8, -15]} intensity={40} color="#ffffff" />
+
+                <Suspense fallback={null}>
+                    <Environment preset="studio" />
+                    <ChessBoard />
+                    <ChessPieces board={board} />
+                </Suspense>
 
                 <ContactShadows
-                    opacity={0.4}
-                    scale={20}
-                    blur={2}
-                    far={4.5}
-                    resolution={256}
+                    position={[0, -0.01, 0]}
+                    opacity={0.35}
+                    scale={14}
+                    blur={2.5}
+                    far={4}
+                    resolution={1024}
                     color="#000000"
                 />
-                <Environment preset="night" />
             </Canvas>
         </div>
     );
 }
 
-function Board() {
-    const squares = [];
-    for (let i = 0; i < 8; i++) {
-        for (let j = 0; j < 8; j++) {
-            const isDark = (i + j) % 2 === 1;
-            squares.push(
-                <mesh
-                    key={`${i}-${j}`}
-                    position={[i - 3.5, -0.05, j - 3.5]}
-                    receiveShadow
-                >
-                    <boxGeometry args={[1, 0.1, 1]} />
-                    <meshStandardMaterial
-                        color={isDark ? "#111" : "#222"}
-                        roughness={0.5}
-                        metalness={0.2}
-                    />
-                </mesh>
-            );
+function ChessBoard() {
+    // Colors matching the reference image exactly
+    const darkSquareColor = "#3d3d3d";  // Deep charcoal grey
+    const lightSquareColor = "#d4d4d4"; // Clean off-white/light grey
+    const borderColor = "#8b7355";       // Muted tan/dusty brown
+
+    const squares = useMemo(() => {
+        const result = [];
+        for (let row = 0; row < 8; row++) {
+            for (let col = 0; col < 8; col++) {
+                const isDark = (row + col) % 2 === 1;
+                const x = col - 3.5;
+                const z = row - 3.5;
+                result.push(
+                    <mesh
+                        key={`${row}-${col}`}
+                        position={[x, 0.06, z]}
+                        receiveShadow
+                    >
+                        <boxGeometry args={[1, 0.12, 1]} />
+                        <meshStandardMaterial
+                            color={isDark ? darkSquareColor : lightSquareColor}
+                            roughness={0.55}
+                            metalness={0.02}
+                        />
+                    </mesh>
+                );
+            }
         }
-    }
+        return result;
+    }, []);
 
     return (
         <group>
             {squares}
-            <mesh position={[0, -0.2, 0]} receiveShadow>
-                <boxGeometry args={[9, 0.2, 9]} />
-                <meshStandardMaterial color="#050505" roughness={1} />
+
+            {/* Muted tan/dusty brown border matching reference */}
+            <mesh position={[0, -0.02, 0]} receiveShadow>
+                <boxGeometry args={[8.6, 0.2, 8.6]} />
+                <meshStandardMaterial
+                    color={borderColor}
+                    roughness={0.65}
+                    metalness={0.02}
+                />
+            </mesh>
+
+            {/* Thin dark line at board edge */}
+            <mesh position={[0, 0.005, 0]}>
+                <boxGeometry args={[8.02, 0.01, 8.02]} />
+                <meshStandardMaterial color="#2a2a2a" roughness={0.9} />
             </mesh>
         </group>
     );
 }
 
-function Piece({ type, color, position }: { type: string; color: string; position: [number, number, number] }) {
+interface ChessPiecesProps {
+    board: ReturnType<typeof fenToBoard>;
+}
+
+function ChessPieces({ board }: ChessPiecesProps) {
+    const pieces: any[] = [];
+
+    board.forEach((row, rowIndex) => {
+        row.forEach((cell, colIndex) => {
+            if (cell) {
+                const x = colIndex - 3.5;
+                const z = rowIndex - 3.5;
+                pieces.push(
+                    <ChessPiece
+                        key={`${cell.type}-${cell.color}-${rowIndex}-${colIndex}`}
+                        type={cell.type}
+                        color={cell.color}
+                        targetPosition={[x, 0.12, z]}
+                    />
+                );
+            }
+        });
+    });
+
+    return <>{pieces}</>;
+}
+
+interface ChessPieceProps {
+    type: string;
+    color: string;
+    targetPosition: [number, number, number];
+}
+
+function ChessPiece({ type, color, targetPosition }: ChessPieceProps) {
     const meshRef = useRef<THREE.Group>(null);
-    const targetPos = useMemo(() => new THREE.Vector3(...position), [position]);
-    const currentPos = useRef(new THREE.Vector3(...position));
+    const currentPos = useRef(new THREE.Vector3(...targetPosition));
+    const target = useMemo(() => new THREE.Vector3(...targetPosition), [targetPosition]);
 
     const isWhite = color === "w";
-    const colorHex = isWhite ? "#ededed" : "#333333";
-    const metalness = isWhite ? 0.2 : 0.8;
-    const roughness = isWhite ? 0.3 : 0.1;
 
-    const material = useMemo(() => new THREE.MeshStandardMaterial({
-        color: colorHex,
-        metalness,
-        roughness
-    }), [colorHex, metalness, roughness]);
+    // Materials matching reference - creamy white and glossy black
+    const material = useMemo(() => {
+        if (isWhite) {
+            // Creamy ivory white with semi-gloss
+            return new THREE.MeshStandardMaterial({
+                color: "#e8e4dc",
+                roughness: 0.18,
+                metalness: 0.05,
+                envMapIntensity: 0.9,
+            });
+        } else {
+            // Deep glossy black with reflections
+            return new THREE.MeshStandardMaterial({
+                color: "#1a1a1a",
+                roughness: 0.12,
+                metalness: 0.35,
+                envMapIntensity: 1.2,
+            });
+        }
+    }, [isWhite]);
 
-    useFrame((state, delta) => {
+    useFrame(() => {
         if (meshRef.current) {
-            currentPos.current.lerp(targetPos, 0.1);
+            currentPos.current.lerp(target, 0.12);
             meshRef.current.position.copy(currentPos.current);
-            // Subtle float effect relative to base position
-            meshRef.current.position.y += Math.sin(state.clock.elapsedTime * 2 + position[0]) * 0.005;
         }
     });
 
-    const getGeometry = () => {
-        switch (type) {
-            case "p":
-                return (
-                    <mesh castShadow material={material}>
-                        <cylinderGeometry args={[0.25, 0.3, 0.5, 20]} />
-                    </mesh>
-                );
-            case "r":
-                return (
-                    <mesh castShadow material={material}>
-                        <boxGeometry args={[0.45, 0.7, 0.45]} />
-                    </mesh>
-                );
-            case "n":
+    const getPieceGeometry = () => {
+        const t = type.toLowerCase();
+        switch (t) {
+            case "p": // Pawn - classic Staunton style
                 return (
                     <group>
-                        <mesh position={[0, -0.1, 0]} castShadow material={material}>
-                            <cylinderGeometry args={[0.15, 0.35, 0.4, 8]} />
+                        {/* Base */}
+                        <mesh castShadow receiveShadow position={[0, 0.05, 0]} material={material}>
+                            <cylinderGeometry args={[0.28, 0.32, 0.08, 32]} />
                         </mesh>
-                        <mesh position={[0, 0.2, 0.05]} rotation={[Math.PI / 4, 0, 0]} castShadow material={material}>
-                            <boxGeometry args={[0.25, 0.35, 0.25]} />
+                        {/* Lower body */}
+                        <mesh castShadow receiveShadow position={[0, 0.15, 0]} material={material}>
+                            <cylinderGeometry args={[0.18, 0.26, 0.14, 32]} />
+                        </mesh>
+                        {/* Neck */}
+                        <mesh castShadow receiveShadow position={[0, 0.26, 0]} material={material}>
+                            <cylinderGeometry args={[0.12, 0.16, 0.1, 32]} />
+                        </mesh>
+                        {/* Head */}
+                        <mesh castShadow receiveShadow position={[0, 0.38, 0]} material={material}>
+                            <sphereGeometry args={[0.14, 32, 32]} />
                         </mesh>
                     </group>
                 );
-            case "b":
+
+            case "r": // Rook - castle tower style
                 return (
                     <group>
-                        <mesh position={[0, -0.1, 0]} castShadow material={material}>
-                            <cylinderGeometry args={[0.1, 0.3, 0.6, 20]} />
+                        <mesh castShadow receiveShadow position={[0, 0.05, 0]} material={material}>
+                            <cylinderGeometry args={[0.3, 0.34, 0.08, 32]} />
                         </mesh>
-                        <mesh position={[0, 0.3, 0]} castShadow material={material}>
-                            <sphereGeometry args={[0.18]} />
+                        <mesh castShadow receiveShadow position={[0, 0.28, 0]} material={material}>
+                            <cylinderGeometry args={[0.22, 0.28, 0.4, 32]} />
+                        </mesh>
+                        <mesh castShadow receiveShadow position={[0, 0.52, 0]} material={material}>
+                            <cylinderGeometry args={[0.26, 0.22, 0.08, 32]} />
+                        </mesh>
+                        {/* Battlements */}
+                        <mesh castShadow receiveShadow position={[0, 0.62, 0]} material={material}>
+                            <cylinderGeometry args={[0.24, 0.26, 0.12, 6]} />
                         </mesh>
                     </group>
                 );
-            case "q":
+
+            case "n": // Knight - horse head
                 return (
                     <group>
-                        <mesh position={[0, 0, 0]} castShadow material={material}>
-                            <cylinderGeometry args={[0.15, 0.3, 0.8, 20]} />
+                        <mesh castShadow receiveShadow position={[0, 0.05, 0]} material={material}>
+                            <cylinderGeometry args={[0.3, 0.34, 0.08, 32]} />
                         </mesh>
-                        <mesh position={[0, 0.45, 0]} rotation={[Math.PI / 2, 0, 0]} castShadow material={material}>
-                            <torusGeometry args={[0.12, 0.04, 8, 20]} />
+                        <mesh castShadow receiveShadow position={[0, 0.2, 0]} material={material}>
+                            <cylinderGeometry args={[0.16, 0.26, 0.24, 32]} />
+                        </mesh>
+                        {/* Neck */}
+                        <mesh castShadow receiveShadow position={[0, 0.42, 0.03]} rotation={[-0.3, 0, 0]} material={material}>
+                            <cylinderGeometry args={[0.1, 0.14, 0.3, 32]} />
+                        </mesh>
+                        {/* Head */}
+                        <mesh castShadow receiveShadow position={[0, 0.6, 0.1]} rotation={[-0.5, 0, 0]} material={material}>
+                            <boxGeometry args={[0.16, 0.28, 0.24]} />
+                        </mesh>
+                        {/* Snout */}
+                        <mesh castShadow receiveShadow position={[0, 0.58, 0.28]} rotation={[0.1, 0, 0]} material={material}>
+                            <boxGeometry args={[0.12, 0.15, 0.18]} />
+                        </mesh>
+                        {/* Ear */}
+                        <mesh castShadow receiveShadow position={[0, 0.74, 0.05]} rotation={[-0.2, 0, 0]} material={material}>
+                            <coneGeometry args={[0.05, 0.1, 16]} />
                         </mesh>
                     </group>
                 );
-            case "k":
+
+            case "b": // Bishop - with mitre
                 return (
                     <group>
-                        <mesh position={[0, 0, 0]} castShadow material={material}>
-                            <cylinderGeometry args={[0.15, 0.3, 0.8, 20]} />
+                        <mesh castShadow receiveShadow position={[0, 0.05, 0]} material={material}>
+                            <cylinderGeometry args={[0.3, 0.34, 0.08, 32]} />
                         </mesh>
-                        <mesh position={[0, 0.5, 0]} castShadow material={material}>
-                            <boxGeometry args={[0.15, 0.3, 0.15]} />
+                        <mesh castShadow receiveShadow position={[0, 0.26, 0]} material={material}>
+                            <cylinderGeometry args={[0.1, 0.26, 0.36, 32]} />
                         </mesh>
-                        <mesh position={[0, 0.55, 0]} castShadow material={material}>
-                            <boxGeometry args={[0.35, 0.1, 0.15]} />
+                        {/* Mitre head */}
+                        <mesh castShadow receiveShadow position={[0, 0.52, 0]} material={material}>
+                            <sphereGeometry args={[0.16, 32, 32]} />
+                        </mesh>
+                        {/* Slit decoration */}
+                        <mesh castShadow receiveShadow position={[0, 0.58, 0.08]} rotation={[0.3, 0, 0]} material={material}>
+                            <boxGeometry args={[0.04, 0.12, 0.02]} />
+                        </mesh>
+                        {/* Top */}
+                        <mesh castShadow receiveShadow position={[0, 0.7, 0]} material={material}>
+                            <sphereGeometry args={[0.05, 16, 16]} />
                         </mesh>
                     </group>
                 );
+
+            case "q": // Queen - with crown
+                return (
+                    <group>
+                        <mesh castShadow receiveShadow position={[0, 0.05, 0]} material={material}>
+                            <cylinderGeometry args={[0.32, 0.36, 0.08, 32]} />
+                        </mesh>
+                        <mesh castShadow receiveShadow position={[0, 0.35, 0]} material={material}>
+                            <cylinderGeometry args={[0.1, 0.3, 0.54, 32]} />
+                        </mesh>
+                        {/* Crown base */}
+                        <mesh castShadow receiveShadow position={[0, 0.66, 0]} material={material}>
+                            <sphereGeometry args={[0.18, 32, 32]} />
+                        </mesh>
+                        {/* Crown collar */}
+                        <mesh castShadow receiveShadow position={[0, 0.82, 0]} material={material}>
+                            <cylinderGeometry args={[0.14, 0.1, 0.1, 32]} />
+                        </mesh>
+                        {/* Crown ball */}
+                        <mesh castShadow receiveShadow position={[0, 0.92, 0]} material={material}>
+                            <sphereGeometry args={[0.08, 24, 24]} />
+                        </mesh>
+                    </group>
+                );
+
+            case "k": // King - with cross
+                return (
+                    <group>
+                        <mesh castShadow receiveShadow position={[0, 0.05, 0]} material={material}>
+                            <cylinderGeometry args={[0.32, 0.36, 0.08, 32]} />
+                        </mesh>
+                        <mesh castShadow receiveShadow position={[0, 0.35, 0]} material={material}>
+                            <cylinderGeometry args={[0.12, 0.3, 0.54, 32]} />
+                        </mesh>
+                        {/* Crown base */}
+                        <mesh castShadow receiveShadow position={[0, 0.66, 0]} material={material}>
+                            <sphereGeometry args={[0.18, 32, 32]} />
+                        </mesh>
+                        {/* Crown collar */}
+                        <mesh castShadow receiveShadow position={[0, 0.8, 0]} material={material}>
+                            <cylinderGeometry args={[0.12, 0.15, 0.08, 32]} />
+                        </mesh>
+                        {/* Cross vertical */}
+                        <mesh castShadow receiveShadow position={[0, 0.96, 0]} material={material}>
+                            <boxGeometry args={[0.05, 0.24, 0.05]} />
+                        </mesh>
+                        {/* Cross horizontal */}
+                        <mesh castShadow receiveShadow position={[0, 1.0, 0]} material={material}>
+                            <boxGeometry args={[0.18, 0.05, 0.05]} />
+                        </mesh>
+                    </group>
+                );
+
             default:
                 return (
-                    <mesh castShadow material={material}>
-                        <sphereGeometry args={[0.3]} />
+                    <mesh castShadow receiveShadow material={material}>
+                        <sphereGeometry args={[0.2, 32, 32]} />
                     </mesh>
                 );
         }
@@ -207,11 +365,7 @@ function Piece({ type, color, position }: { type: string; color: string; positio
 
     return (
         <group ref={meshRef}>
-            <Float speed={2} rotationIntensity={0.1} floatIntensity={0.2}>
-                <group position={[0, 0.3, 0]}>
-                    {getGeometry()}
-                </group>
-            </Float>
+            {getPieceGeometry()}
         </group>
     );
 }
