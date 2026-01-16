@@ -52,6 +52,13 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f
 var __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$chess$2e$js$2f$dist$2f$esm$2f$chess$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Ai chess/node_modules/chess.js/dist/esm/chess.js [app-route] (ecmascript)");
 ;
 ;
+// Utility: Sleep for a given number of milliseconds
+function sleep(ms) {
+    return new Promise((resolve)=>setTimeout(resolve, ms));
+}
+// Retry configuration
+const MAX_RETRIES = 3;
+const INITIAL_DELAY_MS = 2000; // 2 seconds
 async function POST(req) {
     let legalMoves = [];
     let cleanModel = "unknown";
@@ -86,10 +93,11 @@ async function POST(req) {
         const isGroq = !model.includes("/");
         const apiKey = isGroq ? apiKeys?.groq : apiKeys?.openrouter;
         const baseUrl = isGroq ? "https://api.groq.com/openai/v1" : "https://openrouter.ai/api/v1";
+        const providerName = isGroq ? "Groq" : "OpenRouter";
         if (!apiKey) {
-            console.error("Missing API Key for:", isGroq ? "Groq" : "OpenRouter");
+            console.error("Missing API Key for:", providerName);
             return __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
-                error: `API key for ${isGroq ? "Groq" : "OpenRouter"} not provided`
+                error: `API key for ${providerName} not provided`
             }, {
                 status: 400
             });
@@ -160,52 +168,89 @@ IMPORTANT:
                 type: "json_object"
             };
         }
-        console.log(`Requesting move from ${cleanModel} via ${isGroq ? 'Groq' : 'OpenRouter'}`);
-        // Make API request with error handling
-        let response;
-        try {
-            response = await fetch(`${baseUrl}/chat/completions`, {
-                method: "POST",
-                headers: {
-                    "Authorization": `Bearer ${apiKey}`,
-                    "Content-Type": "application/json",
-                    ...isGroq ? {} : {
-                        "HTTP-Referer": "https://ai-chess-league.com",
-                        "X-Title": "AI Chess League"
+        console.log(`Requesting move from ${cleanModel} via ${providerName}`);
+        // Retry loop with exponential backoff
+        let response = null;
+        let lastError = "";
+        for(let attempt = 0; attempt < MAX_RETRIES; attempt++){
+            try {
+                response = await fetch(`${baseUrl}/chat/completions`, {
+                    method: "POST",
+                    headers: {
+                        "Authorization": `Bearer ${apiKey}`,
+                        "Content-Type": "application/json",
+                        ...isGroq ? {} : {
+                            "HTTP-Referer": "https://ai-chess-league.com",
+                            "X-Title": "AI Chess League"
+                        }
+                    },
+                    body: JSON.stringify(apiRequestBody)
+                });
+                // Check if successful
+                if (response.ok) {
+                    console.log(`API request succeeded on attempt ${attempt + 1}`);
+                    break;
+                }
+                // Handle rate limiting with retry
+                if (response.status === 429) {
+                    const retryAfter = response.headers.get("retry-after");
+                    const waitTime = retryAfter ? parseInt(retryAfter) * 1000 : INITIAL_DELAY_MS * Math.pow(2, attempt);
+                    console.warn(`Rate limited (429) on attempt ${attempt + 1}. Waiting ${waitTime}ms before retry...`);
+                    lastError = `Rate limited by ${providerName}`;
+                    if (attempt < MAX_RETRIES - 1) {
+                        await sleep(waitTime);
+                        continue;
                     }
-                },
-                body: JSON.stringify(apiRequestBody)
-            });
-        } catch (fetchError) {
-            console.error("Fetch error:", fetchError);
-            // Return a fallback move instead of crashing
-            const fallbackMove = legalMoves[Math.floor(Math.random() * legalMoves.length)];
-            return __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
-                move: fallbackMove,
-                thoughts: "Network error occurred, playing a safe move."
-            });
+                }
+                // Handle server errors with retry
+                if (response.status >= 500) {
+                    const waitTime = INITIAL_DELAY_MS * Math.pow(2, attempt);
+                    console.warn(`Server error (${response.status}) on attempt ${attempt + 1}. Waiting ${waitTime}ms before retry...`);
+                    lastError = `${providerName} server error (${response.status})`;
+                    if (attempt < MAX_RETRIES - 1) {
+                        await sleep(waitTime);
+                        continue;
+                    }
+                }
+                // Non-retryable errors
+                if (response.status === 401) {
+                    return __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
+                        error: `Invalid ${providerName} API Key`
+                    }, {
+                        status: 401
+                    });
+                }
+                if (response.status === 402) {
+                    lastError = `${providerName} requires payment or credits`;
+                    break;
+                }
+                // Other errors - log and break
+                const errorText = await response.text();
+                console.error(`API Error (${response.status}):`, errorText);
+                lastError = `${providerName} error: ${response.status}`;
+                break;
+            } catch (fetchError) {
+                console.error(`Fetch error on attempt ${attempt + 1}:`, fetchError);
+                lastError = "Network connection error";
+                if (attempt < MAX_RETRIES - 1) {
+                    const waitTime = INITIAL_DELAY_MS * Math.pow(2, attempt);
+                    await sleep(waitTime);
+                    continue;
+                }
+            }
         }
-        if (!response.ok) {
-            const errorText = await response.text();
-            console.error(`API Error (${response.status}):`, errorText);
-            // Return fallback move for API errors instead of 500
+        // If all retries failed, return a fallback move
+        if (!response || !response.ok) {
             const fallbackMove = legalMoves[Math.floor(Math.random() * legalMoves.length)];
-            if (response.status === 401) {
-                return __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
-                    error: "Invalid API Key"
-                }, {
-                    status: 401
-                });
-            }
-            if (response.status === 429) {
-                return __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
-                    move: fallbackMove,
-                    thoughts: "Rate limited, playing a strategic move."
-                });
+            console.warn(`All ${MAX_RETRIES} attempts failed. Using fallback move: ${fallbackMove}`);
+            let errorMessage = lastError || "API unavailable";
+            // Provide specific guidance for OpenRouter limits
+            if (!isGroq && lastError.includes("Rate limited")) {
+                errorMessage = "OpenRouter rate limit reached (50/day free tier). Consider using Groq models.";
             }
             return __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
                 move: fallbackMove,
-                thoughts: `API temporarily unavailable, playing ${fallbackMove}.`
+                thoughts: `${errorMessage} Playing ${fallbackMove}.`
             });
         }
         // Parse API response with error handling

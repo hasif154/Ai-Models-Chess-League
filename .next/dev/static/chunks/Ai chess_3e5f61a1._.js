@@ -407,47 +407,29 @@ var _s = __turbopack_context__.k.signature();
 const GROQ_MODELS = [
     {
         id: "llama-3.3-70b-versatile",
-        name: "Llama 3.3 70B",
-        provider: "Groq",
-        icon: "🦙",
-        speed: "Fast"
+        name: "Llama 3.3 70B"
     },
     {
         id: "llama-3.1-8b-instant",
-        name: "Llama 3.1 8B",
-        provider: "Groq",
-        icon: "🦙",
-        speed: "Instant"
+        name: "Llama 3.1 8B"
     },
     {
         id: "mixtral-8x7b-32768",
-        name: "Mixtral 8x7B",
-        provider: "Groq",
-        icon: "🔀",
-        speed: "Fast"
+        name: "Mixtral 8x7B"
     }
 ];
 const OPENROUTER_MODELS = [
     {
         id: "google/gemini-2.0-flash-exp:free",
-        name: "Gemini 2.0",
-        provider: "Google",
-        icon: "✨",
-        speed: "Fast"
+        name: "Gemini 2.0 Flash"
     },
     {
         id: "anthropic/claude-3.5-sonnet",
-        name: "Claude 3.5",
-        provider: "Anthropic",
-        icon: "🎭",
-        speed: "Premium"
+        name: "Claude 3.5 Sonnet"
     },
     {
         id: "openai/gpt-4o",
-        name: "GPT-4o",
-        provider: "OpenAI",
-        icon: "🧠",
-        speed: "Premium"
+        name: "GPT-4o"
     }
 ];
 function ModelSelection({ apiKeys, onSubmit }) {
@@ -458,12 +440,6 @@ function ModelSelection({ apiKeys, onSubmit }) {
     if (apiKeys.openrouter) availableModels.push(...OPENROUTER_MODELS);
     const [model1, setModel1] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(availableModels[0].id);
     const [model2, setModel2] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(availableModels[1]?.id || availableModels[0].id);
-    const getModelInfo = (id)=>[
-            ...GROQ_MODELS,
-            ...OPENROUTER_MODELS
-        ].find((m)=>m.id === id);
-    const m1 = getModelInfo(model1);
-    const m2 = getModelInfo(model2);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "relative flex flex-col items-center justify-center min-h-screen p-4 bg-pattern",
         children: [
@@ -473,12 +449,12 @@ function ModelSelection({ apiKeys, onSubmit }) {
                     className: "absolute top-1/3 left-1/4 w-72 h-72 bg-white/[0.02] rounded-full blur-3xl"
                 }, void 0, false, {
                     fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                    lineNumber: 36,
+                    lineNumber: 32,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                lineNumber: 35,
+                lineNumber: 31,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -492,7 +468,7 @@ function ModelSelection({ apiKeys, onSubmit }) {
                                 children: "Choose Your Fighters"
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                lineNumber: 41,
+                                lineNumber: 37,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -500,20 +476,20 @@ function ModelSelection({ apiKeys, onSubmit }) {
                                 children: "Select AI models for an epic chess battle"
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                lineNumber: 44,
+                                lineNumber: 40,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                        lineNumber: 40,
+                        lineNumber: 36,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "w-full lg:w-80 player-card player-card-white p-6 space-y-6",
+                                className: "w-full lg:w-80 player-card player-card-white p-6 space-y-4",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "flex items-center gap-3",
@@ -531,25 +507,25 @@ function ModelSelection({ apiKeys, onSubmit }) {
                                                             r: "4"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                                            lineNumber: 52,
+                                                            lineNumber: 48,
                                                             columnNumber: 37
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
                                                             d: "M12 14c-6 0-8 3-8 6v2h16v-2c0-3-2-6-8-6z"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                                            lineNumber: 52,
+                                                            lineNumber: 48,
                                                             columnNumber: 68
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                                    lineNumber: 51,
+                                                    lineNumber: 47,
                                                     columnNumber: 33
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                                lineNumber: 50,
+                                                lineNumber: 46,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -560,7 +536,7 @@ function ModelSelection({ apiKeys, onSubmit }) {
                                                         children: "Player 1"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                                        lineNumber: 56,
+                                                        lineNumber: 52,
                                                         columnNumber: 33
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -568,19 +544,19 @@ function ModelSelection({ apiKeys, onSubmit }) {
                                                         children: "White Pieces"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                                        lineNumber: 57,
+                                                        lineNumber: 53,
                                                         columnNumber: 33
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                                lineNumber: 55,
+                                                lineNumber: 51,
                                                 columnNumber: 29
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                        lineNumber: 49,
+                                        lineNumber: 45,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -589,50 +565,21 @@ function ModelSelection({ apiKeys, onSubmit }) {
                                         className: "premium-select w-full p-4 text-white text-sm",
                                         children: availableModels.map((m)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                 value: m.id,
-                                                children: [
-                                                    m.icon,
-                                                    " ",
-                                                    m.name
-                                                ]
-                                            }, m.id, true, {
+                                                children: m.name
+                                            }, m.id, false, {
                                                 fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                                lineNumber: 61,
+                                                lineNumber: 57,
                                                 columnNumber: 57
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                        lineNumber: 60,
+                                        lineNumber: 56,
                                         columnNumber: 25
-                                    }, this),
-                                    m1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex items-center justify-between text-xs",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "text-zinc-500",
-                                                children: m1.provider
-                                            }, void 0, false, {
-                                                fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                                lineNumber: 63,
-                                                columnNumber: 91
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: `px-2 py-0.5 rounded-full text-[10px] ${m1.speed === 'Instant' ? 'bg-emerald-500/20 text-emerald-400' : m1.speed === 'Fast' ? 'bg-blue-500/20 text-blue-400' : 'bg-purple-500/20 text-purple-400'}`,
-                                                children: m1.speed
-                                            }, void 0, false, {
-                                                fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                                lineNumber: 63,
-                                                columnNumber: 143
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                        lineNumber: 63,
-                                        columnNumber: 32
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                lineNumber: 48,
+                                lineNumber: 44,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -640,11 +587,11 @@ function ModelSelection({ apiKeys, onSubmit }) {
                                 children: "VS"
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                lineNumber: 66,
+                                lineNumber: 61,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "w-full lg:w-80 player-card player-card-black p-6 space-y-6",
+                                className: "w-full lg:w-80 player-card player-card-black p-6 space-y-4",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "flex items-center gap-3",
@@ -662,25 +609,25 @@ function ModelSelection({ apiKeys, onSubmit }) {
                                                             r: "4"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                                            lineNumber: 72,
+                                                            lineNumber: 67,
                                                             columnNumber: 37
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
                                                             d: "M12 14c-6 0-8 3-8 6v2h16v-2c0-3-2-6-8-6z"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                                            lineNumber: 72,
+                                                            lineNumber: 67,
                                                             columnNumber: 68
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                                    lineNumber: 71,
+                                                    lineNumber: 66,
                                                     columnNumber: 33
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                                lineNumber: 70,
+                                                lineNumber: 65,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -691,7 +638,7 @@ function ModelSelection({ apiKeys, onSubmit }) {
                                                         children: "Player 2"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                                        lineNumber: 76,
+                                                        lineNumber: 71,
                                                         columnNumber: 33
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -699,19 +646,19 @@ function ModelSelection({ apiKeys, onSubmit }) {
                                                         children: "Black Pieces"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                                        lineNumber: 77,
+                                                        lineNumber: 72,
                                                         columnNumber: 33
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                                lineNumber: 75,
+                                                lineNumber: 70,
                                                 columnNumber: 29
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                        lineNumber: 69,
+                                        lineNumber: 64,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -720,56 +667,27 @@ function ModelSelection({ apiKeys, onSubmit }) {
                                         className: "premium-select w-full p-4 text-white text-sm",
                                         children: availableModels.map((m)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                 value: m.id,
-                                                children: [
-                                                    m.icon,
-                                                    " ",
-                                                    m.name
-                                                ]
-                                            }, m.id, true, {
+                                                children: m.name
+                                            }, m.id, false, {
                                                 fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                                lineNumber: 81,
+                                                lineNumber: 76,
                                                 columnNumber: 57
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                        lineNumber: 80,
+                                        lineNumber: 75,
                                         columnNumber: 25
-                                    }, this),
-                                    m2 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex items-center justify-between text-xs",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "text-zinc-500",
-                                                children: m2.provider
-                                            }, void 0, false, {
-                                                fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                                lineNumber: 83,
-                                                columnNumber: 91
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: `px-2 py-0.5 rounded-full text-[10px] ${m2.speed === 'Instant' ? 'bg-emerald-500/20 text-emerald-400' : m2.speed === 'Fast' ? 'bg-blue-500/20 text-blue-400' : 'bg-purple-500/20 text-purple-400'}`,
-                                                children: m2.speed
-                                            }, void 0, false, {
-                                                fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                                lineNumber: 83,
-                                                columnNumber: 143
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                        lineNumber: 83,
-                                        columnNumber: 32
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                lineNumber: 68,
+                                lineNumber: 63,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                        lineNumber: 47,
+                        lineNumber: 43,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -786,24 +704,24 @@ function ModelSelection({ apiKeys, onSubmit }) {
                                         d: "M8 5v14l11-7z"
                                     }, void 0, false, {
                                         fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                        lineNumber: 89,
+                                        lineNumber: 83,
                                         columnNumber: 90
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                                    lineNumber: 89,
+                                    lineNumber: 83,
                                     columnNumber: 25
                                 }, this),
                                 "Start Match"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                            lineNumber: 88,
+                            lineNumber: 82,
                             columnNumber: 21
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                        lineNumber: 87,
+                        lineNumber: 81,
                         columnNumber: 17
                     }, this),
                     !apiKeys.openrouter && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -811,19 +729,19 @@ function ModelSelection({ apiKeys, onSubmit }) {
                         children: "Add OpenRouter API key to unlock GPT-4o, Claude, and Gemini."
                     }, void 0, false, {
                         fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                        lineNumber: 94,
+                        lineNumber: 88,
                         columnNumber: 41
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-                lineNumber: 39,
+                lineNumber: 35,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Ai chess/components/ModelSelection.tsx",
-        lineNumber: 34,
+        lineNumber: 30,
         columnNumber: 9
     }, this);
 }
@@ -849,7 +767,6 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f
 var __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$OrbitControls$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Ai chess/node_modules/@react-three/drei/core/OrbitControls.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$PerspectiveCamera$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Ai chess/node_modules/@react-three/drei/core/PerspectiveCamera.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$ContactShadows$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Ai chess/node_modules/@react-three/drei/core/ContactShadows.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Environment$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Ai chess/node_modules/@react-three/drei/core/Environment.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Ai chess/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Ai chess/node_modules/three/build/three.core.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$chess$2e$js$2f$dist$2f$esm$2f$chess$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Ai chess/node_modules/chess.js/dist/esm/chess.js [app-client] (ecmascript)");
@@ -866,7 +783,7 @@ function fenToBoard(fen) {
     const chess = new __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$chess$2e$js$2f$dist$2f$esm$2f$chess$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Chess"](fen);
     return chess.board();
 }
-function Scene3d({ fen, lastMove }) {
+function Scene3d({ fen, lastMove, whitePieceStyle = "maple", currentTurn = "w" }) {
     _s();
     const board = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
         "Scene3d.useMemo[board]": ()=>fenToBoard(fen)
@@ -890,32 +807,31 @@ function Scene3d({ fen, lastMove }) {
                     makeDefault: true,
                     position: [
                         0,
-                        5,
-                        11
+                        7,
+                        14
                     ],
-                    fov: 42
+                    fov: 38
                 }, void 0, false, {
                     fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                    lineNumber: 28,
+                    lineNumber: 30,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$OrbitControls$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["OrbitControls"], {
                     enablePan: false,
-                    maxPolarAngle: Math.PI / 2.1,
-                    minPolarAngle: Math.PI / 8,
-                    minDistance: 11,
-                    maxDistance: 20,
+                    enableZoom: false,
+                    maxPolarAngle: Math.PI / 2.2,
+                    minPolarAngle: Math.PI / 6,
                     autoRotate: false,
                     enableDamping: true,
                     dampingFactor: 0.05,
                     target: [
                         0,
-                        0.5,
+                        0,
                         0
                     ]
                 }, void 0, false, {
                     fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                    lineNumber: 29,
+                    lineNumber: 31,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("color", {
@@ -925,14 +841,14 @@ function Scene3d({ fen, lastMove }) {
                     ]
                 }, void 0, false, {
                     fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                    lineNumber: 42,
+                    lineNumber: 43,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ambientLight", {
                     intensity: 0.5
                 }, void 0, false, {
                     fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                    lineNumber: 45,
+                    lineNumber: 46,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("directionalLight", {
@@ -950,7 +866,7 @@ function Scene3d({ fen, lastMove }) {
                     "shadow-bias": -0.0001
                 }, void 0, false, {
                     fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                    lineNumber: 48,
+                    lineNumber: 49,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("directionalLight", {
@@ -963,7 +879,7 @@ function Scene3d({ fen, lastMove }) {
                     color: "#f8f8ff"
                 }, void 0, false, {
                     fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                    lineNumber: 57,
+                    lineNumber: 58,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("pointLight", {
@@ -976,26 +892,20 @@ function Scene3d({ fen, lastMove }) {
                     color: "#ffffff"
                 }, void 0, false, {
                     fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                    lineNumber: 64,
+                    lineNumber: 65,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Suspense"], {
                     fallback: null,
                     children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Environment$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Environment"], {
-                            preset: "studio"
-                        }, void 0, false, {
-                            fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                            lineNumber: 67,
-                            columnNumber: 21
-                        }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ChessBoard, {}, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
                             lineNumber: 68,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ChessPieces, {
-                            board: board
+                            board: board,
+                            whitePieceStyle: whitePieceStyle
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
                             lineNumber: 69,
@@ -1004,7 +914,7 @@ function Scene3d({ fen, lastMove }) {
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                    lineNumber: 66,
+                    lineNumber: 67,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$ContactShadows$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ContactShadows"], {
@@ -1027,12 +937,12 @@ function Scene3d({ fen, lastMove }) {
             ]
         }, void 0, true, {
             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-            lineNumber: 26,
+            lineNumber: 28,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-        lineNumber: 25,
+        lineNumber: 27,
         columnNumber: 9
     }, this);
 }
@@ -1040,10 +950,11 @@ _s(Scene3d, "DjA+Py5MNWoFEaTMK2jwdkWQfvg=");
 _c = Scene3d;
 function ChessBoard() {
     _s1();
-    // Colors matching the reference image exactly
-    const darkSquareColor = "#3d3d3d"; // Deep charcoal grey
-    const lightSquareColor = "#d4d4d4"; // Clean off-white/light grey
-    const borderColor = "#8b7355"; // Muted tan/dusty brown
+    // Elegant dark and light chess board colors
+    const darkSquareColor = "#1B1A1B"; // Dark charcoal
+    const lightSquareColor = "#E5E0D7"; // Soft ivory
+    const borderColor = "#B7A688"; // Border frame
+    const cornerColor = "#6D4C32"; // Border corners
     const squares = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
         "ChessBoard.useMemo[squares]": ()=>{
             const result = [];
@@ -1068,7 +979,7 @@ function ChessBoard() {
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 105,
+                                lineNumber: 107,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("meshStandardMaterial", {
@@ -1077,13 +988,13 @@ function ChessBoard() {
                                 metalness: 0.02
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 106,
+                                lineNumber: 108,
                                 columnNumber: 25
                             }, this)
                         ]
                     }, `${row}-${col}`, true, {
                         fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                        lineNumber: 100,
+                        lineNumber: 102,
                         columnNumber: 21
                     }, this));
                 }
@@ -1091,6 +1002,25 @@ function ChessBoard() {
             return result;
         }
     }["ChessBoard.useMemo[squares]"], []);
+    // Corner positions
+    const corners = [
+        [
+            -4.2,
+            -4.2
+        ],
+        [
+            -4.2,
+            4.2
+        ],
+        [
+            4.2,
+            -4.2
+        ],
+        [
+            4.2,
+            4.2
+        ]
+    ];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("group", {
         children: [
             squares,
@@ -1110,7 +1040,7 @@ function ChessBoard() {
                         ]
                     }, void 0, false, {
                         fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                        lineNumber: 124,
+                        lineNumber: 131,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("meshStandardMaterial", {
@@ -1119,15 +1049,49 @@ function ChessBoard() {
                         metalness: 0.02
                     }, void 0, false, {
                         fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                        lineNumber: 125,
+                        lineNumber: 132,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                lineNumber: 123,
+                lineNumber: 130,
                 columnNumber: 13
             }, this),
+            corners.map(([x, z], i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mesh", {
+                    position: [
+                        x,
+                        0.02,
+                        z
+                    ],
+                    receiveShadow: true,
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("boxGeometry", {
+                            args: [
+                                0.6,
+                                0.18,
+                                0.6
+                            ]
+                        }, void 0, false, {
+                            fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
+                            lineNumber: 142,
+                            columnNumber: 21
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("meshStandardMaterial", {
+                            color: cornerColor,
+                            roughness: 0.5,
+                            metalness: 0.05
+                        }, void 0, false, {
+                            fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
+                            lineNumber: 143,
+                            columnNumber: 21
+                        }, this)
+                    ]
+                }, i, true, {
+                    fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
+                    lineNumber: 141,
+                    columnNumber: 17
+                }, this)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mesh", {
                 position: [
                     0,
@@ -1143,7 +1107,7 @@ function ChessBoard() {
                         ]
                     }, void 0, false, {
                         fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                        lineNumber: 134,
+                        lineNumber: 153,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("meshStandardMaterial", {
@@ -1151,25 +1115,25 @@ function ChessBoard() {
                         roughness: 0.9
                     }, void 0, false, {
                         fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                        lineNumber: 135,
+                        lineNumber: 154,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                lineNumber: 133,
+                lineNumber: 152,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-        lineNumber: 119,
+        lineNumber: 126,
         columnNumber: 9
     }, this);
 }
 _s1(ChessBoard, "hFQxvrxCUMIE9YrcMBcKn+3SG6A=");
 _c1 = ChessBoard;
-function ChessPieces({ board }) {
+function ChessPieces({ board, whitePieceStyle }) {
     const pieces = [];
     board.forEach((row, rowIndex)=>{
         row.forEach((cell, colIndex)=>{
@@ -1183,10 +1147,11 @@ function ChessPieces({ board }) {
                         x,
                         0.12,
                         z
-                    ]
+                    ],
+                    whitePieceStyle: whitePieceStyle
                 }, `${cell.type}-${cell.color}-${rowIndex}-${colIndex}`, false, {
                     fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                    lineNumber: 154,
+                    lineNumber: 174,
                     columnNumber: 21
                 }, this));
             }
@@ -1197,7 +1162,7 @@ function ChessPieces({ board }) {
     }, void 0, false);
 }
 _c2 = ChessPieces;
-function ChessPiece({ type, color, targetPosition }) {
+function ChessPiece({ type, color, targetPosition, whitePieceStyle }) {
     _s2();
     const meshRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
     const currentPos = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(new __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Vector3"](...targetPosition));
@@ -1207,29 +1172,32 @@ function ChessPiece({ type, color, targetPosition }) {
         targetPosition
     ]);
     const isWhite = color === "w";
-    // Materials matching reference - creamy white and glossy black
+    // White piece colors based on style option
+    const whitePieceColors = {
+        maple: "#E7D9B7",
+        cherry: "#CBB88B" // Cherry Warm
+    };
+    // Piece materials - static lighting
     const material = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
         "ChessPiece.useMemo[material]": ()=>{
             if (isWhite) {
-                // Creamy ivory white with semi-gloss
                 return new __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MeshStandardMaterial"]({
-                    color: "#e8e4dc",
-                    roughness: 0.18,
-                    metalness: 0.05,
-                    envMapIntensity: 0.9
+                    color: whitePieceColors[whitePieceStyle],
+                    roughness: 0.25,
+                    metalness: 0.02
                 });
             } else {
-                // Deep glossy black with reflections
+                // Dark pieces
                 return new __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MeshStandardMaterial"]({
-                    color: "#1a1a1a",
-                    roughness: 0.12,
-                    metalness: 0.35,
-                    envMapIntensity: 1.2
+                    color: "#1F1E1D",
+                    roughness: 0.2,
+                    metalness: 0.1
                 });
             }
         }
     }["ChessPiece.useMemo[material]"], [
-        isWhite
+        isWhite,
+        whitePieceStyle
     ]);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f40$react$2d$three$2f$fiber$2f$dist$2f$events$2d$5a94e5eb$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__D__as__useFrame$3e$__["useFrame"])({
         "ChessPiece.useFrame": ()=>{
@@ -1263,12 +1231,12 @@ function ChessPiece({ type, color, targetPosition }) {
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 217,
+                                lineNumber: 241,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                            lineNumber: 216,
+                            lineNumber: 240,
                             columnNumber: 25
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mesh", {
@@ -1289,12 +1257,12 @@ function ChessPiece({ type, color, targetPosition }) {
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 221,
+                                lineNumber: 244,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                            lineNumber: 220,
+                            lineNumber: 243,
                             columnNumber: 25
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mesh", {
@@ -1315,12 +1283,12 @@ function ChessPiece({ type, color, targetPosition }) {
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 225,
+                                lineNumber: 247,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                            lineNumber: 224,
+                            lineNumber: 246,
                             columnNumber: 25
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mesh", {
@@ -1340,18 +1308,18 @@ function ChessPiece({ type, color, targetPosition }) {
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 229,
+                                lineNumber: 250,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                            lineNumber: 228,
+                            lineNumber: 249,
                             columnNumber: 25
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                    lineNumber: 214,
+                    lineNumber: 239,
                     columnNumber: 21
                 }, this);
             case "r":
@@ -1375,12 +1343,12 @@ function ChessPiece({ type, color, targetPosition }) {
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 238,
+                                lineNumber: 259,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                            lineNumber: 237,
+                            lineNumber: 258,
                             columnNumber: 25
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mesh", {
@@ -1401,12 +1369,12 @@ function ChessPiece({ type, color, targetPosition }) {
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 241,
+                                lineNumber: 262,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                            lineNumber: 240,
+                            lineNumber: 261,
                             columnNumber: 25
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mesh", {
@@ -1427,12 +1395,12 @@ function ChessPiece({ type, color, targetPosition }) {
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 244,
+                                lineNumber: 265,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                            lineNumber: 243,
+                            lineNumber: 264,
                             columnNumber: 25
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mesh", {
@@ -1453,18 +1421,18 @@ function ChessPiece({ type, color, targetPosition }) {
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 248,
+                                lineNumber: 268,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                            lineNumber: 247,
+                            lineNumber: 267,
                             columnNumber: 25
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                    lineNumber: 236,
+                    lineNumber: 257,
                     columnNumber: 21
                 }, this);
             case "n":
@@ -1488,12 +1456,12 @@ function ChessPiece({ type, color, targetPosition }) {
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 257,
+                                lineNumber: 277,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                            lineNumber: 256,
+                            lineNumber: 276,
                             columnNumber: 25
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mesh", {
@@ -1514,12 +1482,12 @@ function ChessPiece({ type, color, targetPosition }) {
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 260,
+                                lineNumber: 280,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                            lineNumber: 259,
+                            lineNumber: 279,
                             columnNumber: 25
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mesh", {
@@ -1545,12 +1513,12 @@ function ChessPiece({ type, color, targetPosition }) {
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 264,
+                                lineNumber: 283,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                            lineNumber: 263,
+                            lineNumber: 282,
                             columnNumber: 25
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mesh", {
@@ -1575,12 +1543,12 @@ function ChessPiece({ type, color, targetPosition }) {
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 268,
+                                lineNumber: 286,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                            lineNumber: 267,
+                            lineNumber: 285,
                             columnNumber: 25
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mesh", {
@@ -1605,12 +1573,12 @@ function ChessPiece({ type, color, targetPosition }) {
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 272,
+                                lineNumber: 289,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                            lineNumber: 271,
+                            lineNumber: 288,
                             columnNumber: 25
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mesh", {
@@ -1635,18 +1603,18 @@ function ChessPiece({ type, color, targetPosition }) {
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 276,
+                                lineNumber: 292,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                            lineNumber: 275,
+                            lineNumber: 291,
                             columnNumber: 25
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                    lineNumber: 255,
+                    lineNumber: 275,
                     columnNumber: 21
                 }, this);
             case "b":
@@ -1670,12 +1638,12 @@ function ChessPiece({ type, color, targetPosition }) {
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 285,
+                                lineNumber: 301,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                            lineNumber: 284,
+                            lineNumber: 300,
                             columnNumber: 25
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mesh", {
@@ -1696,12 +1664,12 @@ function ChessPiece({ type, color, targetPosition }) {
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 288,
+                                lineNumber: 304,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                            lineNumber: 287,
+                            lineNumber: 303,
                             columnNumber: 25
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mesh", {
@@ -1721,12 +1689,12 @@ function ChessPiece({ type, color, targetPosition }) {
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 292,
+                                lineNumber: 307,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                            lineNumber: 291,
+                            lineNumber: 306,
                             columnNumber: 25
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mesh", {
@@ -1751,12 +1719,12 @@ function ChessPiece({ type, color, targetPosition }) {
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 296,
+                                lineNumber: 310,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                            lineNumber: 295,
+                            lineNumber: 309,
                             columnNumber: 25
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mesh", {
@@ -1776,18 +1744,18 @@ function ChessPiece({ type, color, targetPosition }) {
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 300,
+                                lineNumber: 313,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                            lineNumber: 299,
+                            lineNumber: 312,
                             columnNumber: 25
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                    lineNumber: 283,
+                    lineNumber: 299,
                     columnNumber: 21
                 }, this);
             case "q":
@@ -1811,12 +1779,12 @@ function ChessPiece({ type, color, targetPosition }) {
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 309,
+                                lineNumber: 322,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                            lineNumber: 308,
+                            lineNumber: 321,
                             columnNumber: 25
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mesh", {
@@ -1837,12 +1805,12 @@ function ChessPiece({ type, color, targetPosition }) {
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 312,
+                                lineNumber: 325,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                            lineNumber: 311,
+                            lineNumber: 324,
                             columnNumber: 25
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mesh", {
@@ -1862,12 +1830,12 @@ function ChessPiece({ type, color, targetPosition }) {
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 316,
+                                lineNumber: 328,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                            lineNumber: 315,
+                            lineNumber: 327,
                             columnNumber: 25
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mesh", {
@@ -1888,12 +1856,12 @@ function ChessPiece({ type, color, targetPosition }) {
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 320,
+                                lineNumber: 331,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                            lineNumber: 319,
+                            lineNumber: 330,
                             columnNumber: 25
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mesh", {
@@ -1913,18 +1881,18 @@ function ChessPiece({ type, color, targetPosition }) {
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 324,
+                                lineNumber: 334,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                            lineNumber: 323,
+                            lineNumber: 333,
                             columnNumber: 25
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                    lineNumber: 307,
+                    lineNumber: 320,
                     columnNumber: 21
                 }, this);
             case "k":
@@ -1948,12 +1916,12 @@ function ChessPiece({ type, color, targetPosition }) {
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 333,
+                                lineNumber: 343,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                            lineNumber: 332,
+                            lineNumber: 342,
                             columnNumber: 25
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mesh", {
@@ -1974,12 +1942,12 @@ function ChessPiece({ type, color, targetPosition }) {
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 336,
+                                lineNumber: 346,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                            lineNumber: 335,
+                            lineNumber: 345,
                             columnNumber: 25
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mesh", {
@@ -1999,12 +1967,12 @@ function ChessPiece({ type, color, targetPosition }) {
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 340,
+                                lineNumber: 349,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                            lineNumber: 339,
+                            lineNumber: 348,
                             columnNumber: 25
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mesh", {
@@ -2025,12 +1993,12 @@ function ChessPiece({ type, color, targetPosition }) {
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 344,
+                                lineNumber: 352,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                            lineNumber: 343,
+                            lineNumber: 351,
                             columnNumber: 25
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mesh", {
@@ -2050,12 +2018,12 @@ function ChessPiece({ type, color, targetPosition }) {
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 348,
+                                lineNumber: 355,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                            lineNumber: 347,
+                            lineNumber: 354,
                             columnNumber: 25
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mesh", {
@@ -2075,18 +2043,18 @@ function ChessPiece({ type, color, targetPosition }) {
                                 ]
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                                lineNumber: 352,
+                                lineNumber: 358,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                            lineNumber: 351,
+                            lineNumber: 357,
                             columnNumber: 25
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                    lineNumber: 331,
+                    lineNumber: 341,
                     columnNumber: 21
                 }, this);
             default:
@@ -2102,12 +2070,12 @@ function ChessPiece({ type, color, targetPosition }) {
                         ]
                     }, void 0, false, {
                         fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                        lineNumber: 360,
+                        lineNumber: 366,
                         columnNumber: 25
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-                    lineNumber: 359,
+                    lineNumber: 365,
                     columnNumber: 21
                 }, this);
         }
@@ -2117,7 +2085,7 @@ function ChessPiece({ type, color, targetPosition }) {
         children: getPieceGeometry()
     }, void 0, false, {
         fileName: "[project]/Ai chess/components/chess/Scene3d.tsx",
-        lineNumber: 367,
+        lineNumber: 373,
         columnNumber: 9
     }, this);
 }
@@ -2207,6 +2175,15 @@ function ModelIcon({ model }) {
     }, this);
 }
 _c = ModelIcon;
+// Piece symbols for captured display
+const PIECE_SYMBOLS = {
+    p: "♟",
+    n: "♞",
+    b: "♝",
+    r: "♜",
+    q: "♛",
+    k: "♚"
+};
 function MatchBoard({ apiKeys, model1, model2 }) {
     _s();
     const [game, setGame] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
@@ -2223,6 +2200,9 @@ function MatchBoard({ apiKeys, model1, model2 }) {
     const [score2, setScore2] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
     const [gameTime, setGameTime] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
     const [thinkingModel, setThinkingModel] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    const [whitePieceStyle, setWhitePieceStyle] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("maple");
+    const [capturedByWhite, setCapturedByWhite] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]); // Black pieces captured by white
+    const [capturedByBlack, setCapturedByBlack] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]); // White pieces captured by black
     const gameRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(game);
     const isThinkingRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(false);
     const statusRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])("playing");
@@ -2280,6 +2260,8 @@ function MatchBoard({ apiKeys, model1, model2 }) {
         status
     ]);
     const formatTime = (s)=>`${Math.floor(s / 60).toString().padStart(2, '0')}:${(s % 60).toString().padStart(2, '0')}`;
+    // Get current turn
+    const currentTurn = game.turn();
     const requestMove = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
         "MatchBoard.useCallback[requestMove]": async ()=>{
             if (statusRef.current === "ended" || isThinkingRef.current) return;
@@ -2327,7 +2309,7 @@ function MatchBoard({ apiKeys, model1, model2 }) {
                     return;
                 }
                 const newGame = new __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$chess$2e$js$2f$dist$2f$esm$2f$chess$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Chess"](currentGame.fen());
-                let moveResult = newGame.move(data.move);
+                const moveResult = newGame.move(data.move);
                 if (!moveResult) {
                     const legalMoves = newGame.moves();
                     const matchedMove = legalMoves.find({
@@ -2335,6 +2317,27 @@ function MatchBoard({ apiKeys, model1, model2 }) {
                     }["MatchBoard.useCallback[requestMove].matchedMove"]);
                     if (matchedMove) newGame.move(matchedMove);
                     else throw new Error(`Invalid move: ${data.move}`);
+                }
+                // Track captured pieces
+                if (moveResult && moveResult.captured) {
+                    const capturedPiece = moveResult.captured;
+                    if (turn === "w") {
+                        // White captured a black piece
+                        setCapturedByWhite({
+                            "MatchBoard.useCallback[requestMove]": (prev)=>[
+                                    ...prev,
+                                    capturedPiece
+                                ]
+                        }["MatchBoard.useCallback[requestMove]"]);
+                    } else {
+                        // Black captured a white piece
+                        setCapturedByBlack({
+                            "MatchBoard.useCallback[requestMove]": (prev)=>[
+                                    ...prev,
+                                    capturedPiece
+                                ]
+                        }["MatchBoard.useCallback[requestMove]"]);
+                    }
                 }
                 setGame(newGame);
                 gameRef.current = newGame;
@@ -2412,7 +2415,7 @@ function MatchBoard({ apiKeys, model1, model2 }) {
                 "MatchBoard.useEffect.timer": ()=>{
                     if (!isThinkingRef.current && statusRef.current === "playing") requestMove();
                 }
-            }["MatchBoard.useEffect.timer"], 1500);
+            }["MatchBoard.useEffect.timer"], 3000);
             return ({
                 "MatchBoard.useEffect": ()=>clearTimeout(timer)
             })["MatchBoard.useEffect"];
@@ -2425,29 +2428,43 @@ function MatchBoard({ apiKeys, model1, model2 }) {
     ]);
     const history = game.history();
     const lastMove = history.length > 0 ? history[history.length - 1] : undefined;
+    // Render captured pieces
+    const renderCapturedPieces = (pieces, isWhitePieces)=>{
+        return pieces.map((p, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: `text-xl ${isWhitePieces ? "text-[#E7D9B7]" : "text-[#1F1E1D]"}`,
+                style: {
+                    textShadow: isWhitePieces ? "0 1px 2px rgba(0,0,0,0.5)" : "0 1px 2px rgba(255,255,255,0.3)"
+                },
+                children: PIECE_SYMBOLS[p] || "?"
+            }, i, false, {
+                fileName: "[project]/Ai chess/components/MatchBoard.tsx",
+                lineNumber: 204,
+                columnNumber: 13
+            }, this));
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "fixed inset-0 bg-black flex flex-col",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "h-16 border-b border-white/5 flex items-center justify-between px-6 bg-black shrink-0",
+                className: "h-14 border-b border-white/5 flex items-center justify-between px-8 bg-black shrink-0",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "flex items-center gap-4",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10",
+                            className: `flex items-center gap-3 px-4 py-2 rounded-full border transition-all ${currentTurn === "w" ? "bg-white/10 border-white/30" : "bg-white/5 border-white/10"}`,
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "w-2.5 h-2.5 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.5)]"
                                 }, void 0, false, {
                                     fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                    lineNumber: 184,
+                                    lineNumber: 220,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ModelIcon, {
                                     model: model1
                                 }, void 0, false, {
                                     fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                    lineNumber: 185,
+                                    lineNumber: 221,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2455,32 +2472,32 @@ function MatchBoard({ apiKeys, model1, model2 }) {
                                     children: getShortModelName(model1)
                                 }, void 0, false, {
                                     fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                    lineNumber: 186,
+                                    lineNumber: 222,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                            lineNumber: 183,
+                            lineNumber: 219,
                             columnNumber: 21
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                        lineNumber: 182,
+                        lineNumber: 218,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "flex items-center gap-6",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "text-4xl font-black tracking-tighter",
+                                className: "text-3xl font-black tracking-tighter",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         className: "text-white",
                                         children: score1
                                     }, void 0, false, {
                                         fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                        lineNumber: 192,
+                                        lineNumber: 228,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2488,7 +2505,7 @@ function MatchBoard({ apiKeys, model1, model2 }) {
                                         children: "-"
                                     }, void 0, false, {
                                         fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                        lineNumber: 193,
+                                        lineNumber: 229,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2496,13 +2513,13 @@ function MatchBoard({ apiKeys, model1, model2 }) {
                                         children: score2
                                     }, void 0, false, {
                                         fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                        lineNumber: 194,
+                                        lineNumber: 230,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                lineNumber: 191,
+                                lineNumber: 227,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2510,239 +2527,285 @@ function MatchBoard({ apiKeys, model1, model2 }) {
                                 children: formatTime(gameTime)
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                lineNumber: 196,
+                                lineNumber: 232,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                        lineNumber: 190,
+                        lineNumber: 226,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "flex items-center gap-4",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10",
+                            className: `flex items-center gap-3 px-4 py-2 rounded-full border transition-all ${currentTurn === "b" ? "bg-white/10 border-white/30" : "bg-white/5 border-white/10"}`,
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     className: "text-white text-sm font-medium",
                                     children: getShortModelName(model2)
                                 }, void 0, false, {
                                     fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                    lineNumber: 201,
+                                    lineNumber: 237,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ModelIcon, {
                                     model: model2
                                 }, void 0, false, {
                                     fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                    lineNumber: 202,
+                                    lineNumber: 238,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "w-2.5 h-2.5 rounded-full bg-zinc-600"
                                 }, void 0, false, {
                                     fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                    lineNumber: 203,
+                                    lineNumber: 239,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                            lineNumber: 200,
+                            lineNumber: 236,
                             columnNumber: 21
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                        lineNumber: 199,
+                        lineNumber: 235,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                lineNumber: 181,
+                lineNumber: 217,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex-1 grid grid-cols-[280px_1fr_280px] min-h-0",
+                className: "flex-1 grid grid-cols-[300px_1fr_300px] min-h-0 gap-4 p-4",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "border-r border-white/5 flex flex-col overflow-hidden bg-black",
+                        className: "flex gap-3",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "p-4 border-b border-white/5",
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "flex items-center gap-3",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "w-8 h-8 rounded-full bg-white flex items-center justify-center",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                className: "w-4 h-4 text-black",
-                                                viewBox: "0 0 24 24",
-                                                fill: "currentColor",
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
-                                                        cx: "12",
-                                                        cy: "8",
-                                                        r: "4"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                                        lineNumber: 216,
-                                                        columnNumber: 37
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                        d: "M12 14c-6 0-8 3-8 6v2h16v-2c0-3-2-6-8-6z"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                                        lineNumber: 216,
-                                                        columnNumber: 68
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                                lineNumber: 215,
-                                                columnNumber: 33
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                            lineNumber: 214,
-                                            columnNumber: 29
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "flex-1 border border-white/5 rounded-xl flex flex-col overflow-hidden bg-black/50",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "p-4 border-b border-white/5",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "flex items-center gap-3",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "text-xs text-white/40 uppercase tracking-widest",
-                                                    children: "White"
+                                                    className: "w-8 h-8 rounded-full bg-white flex items-center justify-center",
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                        className: "w-4 h-4 text-black",
+                                                        viewBox: "0 0 24 24",
+                                                        fill: "currentColor",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
+                                                                cx: "12",
+                                                                cy: "8",
+                                                                r: "4"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/Ai chess/components/MatchBoard.tsx",
+                                                                lineNumber: 254,
+                                                                columnNumber: 41
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                                d: "M12 14c-6 0-8 3-8 6v2h16v-2c0-3-2-6-8-6z"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/Ai chess/components/MatchBoard.tsx",
+                                                                lineNumber: 254,
+                                                                columnNumber: 72
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/Ai chess/components/MatchBoard.tsx",
+                                                        lineNumber: 253,
+                                                        columnNumber: 37
+                                                    }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                                    lineNumber: 220,
+                                                    lineNumber: 252,
                                                     columnNumber: 33
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "text-sm font-medium text-white",
-                                                    children: getShortModelName(model1)
-                                                }, void 0, false, {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: "text-xs text-white/40 uppercase tracking-widest",
+                                                            children: "White"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/Ai chess/components/MatchBoard.tsx",
+                                                            lineNumber: 258,
+                                                            columnNumber: 37
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: "text-sm font-medium text-white",
+                                                            children: getShortModelName(model1)
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/Ai chess/components/MatchBoard.tsx",
+                                                            lineNumber: 259,
+                                                            columnNumber: 37
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
                                                     fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                                    lineNumber: 221,
+                                                    lineNumber: 257,
                                                     columnNumber: 33
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                            lineNumber: 219,
+                                            lineNumber: 251,
                                             columnNumber: 29
                                         }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                    lineNumber: 213,
-                                    columnNumber: 25
-                                }, this)
-                            }, void 0, false, {
-                                fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                lineNumber: 212,
-                                columnNumber: 21
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                ref: scrollRef1,
-                                className: "flex-1 overflow-y-auto p-4 space-y-3 thoughts-scroll",
-                                children: [
-                                    thoughts1.map((t, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "p-3 rounded-lg bg-white/[0.02] border border-white/5",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "text-[10px] text-white/30 mb-1",
-                                                    children: [
-                                                        "Move ",
-                                                        i + 1
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                                    lineNumber: 228,
-                                                    columnNumber: 33
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                    className: "text-white/60 text-sm leading-relaxed",
-                                                    children: t
-                                                }, void 0, false, {
-                                                    fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                                    lineNumber: 229,
-                                                    columnNumber: 33
-                                                }, this)
-                                            ]
-                                        }, i, true, {
-                                            fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                            lineNumber: 227,
-                                            columnNumber: 29
-                                        }, this)),
-                                    thinkingModel === getShortModelName(model1) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex items-center gap-2 text-white/40 px-3",
+                                    }, void 0, false, {
+                                        fileName: "[project]/Ai chess/components/MatchBoard.tsx",
+                                        lineNumber: 250,
+                                        columnNumber: 25
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        ref: scrollRef1,
+                                        className: "flex-1 overflow-y-auto p-4 space-y-3 thoughts-scroll",
                                         children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "flex gap-1",
+                                            thoughts1.map((t, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "p-3 rounded-lg bg-white/[0.02] border border-white/5",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: "text-[10px] text-white/30 mb-1",
+                                                            children: [
+                                                                "Move ",
+                                                                i + 1
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/Ai chess/components/MatchBoard.tsx",
+                                                            lineNumber: 266,
+                                                            columnNumber: 37
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                            className: "text-white/60 text-sm leading-relaxed",
+                                                            children: t
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/Ai chess/components/MatchBoard.tsx",
+                                                            lineNumber: 267,
+                                                            columnNumber: 37
+                                                        }, this)
+                                                    ]
+                                                }, i, true, {
+                                                    fileName: "[project]/Ai chess/components/MatchBoard.tsx",
+                                                    lineNumber: 265,
+                                                    columnNumber: 33
+                                                }, this)),
+                                            thinkingModel === getShortModelName(model1) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "flex items-center gap-2 text-white/40 px-3",
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "w-1.5 h-1.5 bg-white rounded-full thinking-dot"
-                                                    }, void 0, false, {
+                                                        className: "flex gap-1",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "w-1.5 h-1.5 bg-white rounded-full thinking-dot"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/Ai chess/components/MatchBoard.tsx",
+                                                                lineNumber: 273,
+                                                                columnNumber: 41
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "w-1.5 h-1.5 bg-white rounded-full thinking-dot"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/Ai chess/components/MatchBoard.tsx",
+                                                                lineNumber: 274,
+                                                                columnNumber: 41
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "w-1.5 h-1.5 bg-white rounded-full thinking-dot"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/Ai chess/components/MatchBoard.tsx",
+                                                                lineNumber: 275,
+                                                                columnNumber: 41
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
                                                         fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                                        lineNumber: 235,
+                                                        lineNumber: 272,
                                                         columnNumber: 37
                                                     }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "w-1.5 h-1.5 bg-white rounded-full thinking-dot"
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: "text-xs",
+                                                        children: "Thinking..."
                                                     }, void 0, false, {
                                                         fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                                        lineNumber: 236,
-                                                        columnNumber: 37
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "w-1.5 h-1.5 bg-white rounded-full thinking-dot"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                                        lineNumber: 237,
+                                                        lineNumber: 277,
                                                         columnNumber: 37
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                                lineNumber: 234,
-                                                columnNumber: 33
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "text-xs",
-                                                children: "Thinking..."
-                                            }, void 0, false, {
-                                                fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                                lineNumber: 239,
+                                                lineNumber: 271,
                                                 columnNumber: 33
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                        lineNumber: 233,
-                                        columnNumber: 29
+                                        lineNumber: 263,
+                                        columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                lineNumber: 225,
+                                lineNumber: 249,
+                                columnNumber: 21
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "w-8 flex flex-col items-center gap-1 pt-4",
+                                children: renderCapturedPieces(capturedByBlack, true)
+                            }, void 0, false, {
+                                fileName: "[project]/Ai chess/components/MatchBoard.tsx",
+                                lineNumber: 284,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                        lineNumber: 211,
+                        lineNumber: 247,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "relative bg-black",
+                        className: "relative bg-black rounded-xl overflow-hidden border border-white/5",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$components$2f$chess$2f$Scene3d$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                 fen: game.fen(),
-                                lastMove: lastMove
+                                lastMove: lastMove,
+                                whitePieceStyle: whitePieceStyle,
+                                currentTurn: currentTurn
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                lineNumber: 247,
+                                lineNumber: 291,
+                                columnNumber: 21
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "absolute bottom-4 left-4 flex gap-2",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                        onClick: ()=>setWhitePieceStyle("maple"),
+                                        className: `px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${whitePieceStyle === "maple" ? "bg-[#E7D9B7] text-black" : "bg-white/10 text-white/50 hover:bg-white/20"}`,
+                                        children: "Maple"
+                                    }, void 0, false, {
+                                        fileName: "[project]/Ai chess/components/MatchBoard.tsx",
+                                        lineNumber: 300,
+                                        columnNumber: 25
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                        onClick: ()=>setWhitePieceStyle("cherry"),
+                                        className: `px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${whitePieceStyle === "cherry" ? "bg-[#CBB88B] text-black" : "bg-white/10 text-white/50 hover:bg-white/20"}`,
+                                        children: "Cherry"
+                                    }, void 0, false, {
+                                        fileName: "[project]/Ai chess/components/MatchBoard.tsx",
+                                        lineNumber: 309,
+                                        columnNumber: 25
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/Ai chess/components/MatchBoard.tsx",
+                                lineNumber: 299,
                                 columnNumber: 21
                             }, this),
                             isThinking && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2754,7 +2817,7 @@ function MatchBoard({ apiKeys, model1, model2 }) {
                                             className: "w-2 h-2 bg-white rounded-full animate-pulse"
                                         }, void 0, false, {
                                             fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                            lineNumber: 251,
+                                            lineNumber: 323,
                                             columnNumber: 33
                                         }, this),
                                         thinkingModel,
@@ -2762,12 +2825,12 @@ function MatchBoard({ apiKeys, model1, model2 }) {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                    lineNumber: 250,
+                                    lineNumber: 322,
                                     columnNumber: 29
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                lineNumber: 249,
+                                lineNumber: 321,
                                 columnNumber: 25
                             }, this),
                             error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2777,12 +2840,12 @@ function MatchBoard({ apiKeys, model1, model2 }) {
                                     children: error
                                 }, void 0, false, {
                                     fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                    lineNumber: 258,
+                                    lineNumber: 330,
                                     columnNumber: 29
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                lineNumber: 257,
+                                lineNumber: 329,
                                 columnNumber: 25
                             }, this),
                             status === "ended" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2795,7 +2858,7 @@ function MatchBoard({ apiKeys, model1, model2 }) {
                                             children: "Match Over"
                                         }, void 0, false, {
                                             fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                            lineNumber: 264,
+                                            lineNumber: 336,
                                             columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2803,7 +2866,7 @@ function MatchBoard({ apiKeys, model1, model2 }) {
                                             children: commentary
                                         }, void 0, false, {
                                             fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                            lineNumber: 265,
+                                            lineNumber: 337,
                                             columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2812,18 +2875,18 @@ function MatchBoard({ apiKeys, model1, model2 }) {
                                             children: "New Match"
                                         }, void 0, false, {
                                             fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                            lineNumber: 266,
+                                            lineNumber: 338,
                                             columnNumber: 33
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                    lineNumber: 263,
+                                    lineNumber: 335,
                                     columnNumber: 29
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                lineNumber: 262,
+                                lineNumber: 334,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2836,234 +2899,251 @@ function MatchBoard({ apiKeys, model1, model2 }) {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                    lineNumber: 276,
+                                    lineNumber: 348,
                                     columnNumber: 25
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                lineNumber: 275,
+                                lineNumber: 347,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                        lineNumber: 246,
+                        lineNumber: 290,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "border-l border-white/5 flex flex-col overflow-hidden bg-black",
+                        className: "flex gap-3",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "p-4 border-b border-white/5",
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "flex items-center gap-3 justify-end",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "w-8 flex flex-col items-center gap-1 pt-4",
+                                children: renderCapturedPieces(capturedByWhite, false)
+                            }, void 0, false, {
+                                fileName: "[project]/Ai chess/components/MatchBoard.tsx",
+                                lineNumber: 355,
+                                columnNumber: 21
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "flex-1 border border-white/5 rounded-xl flex flex-col overflow-hidden bg-black/50",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "p-4 border-b border-white/5",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "flex items-center gap-3 justify-end",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "text-xs text-white/40 uppercase tracking-widest text-right",
-                                                    children: "Black"
-                                                }, void 0, false, {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: "text-xs text-white/40 uppercase tracking-widest text-right",
+                                                            children: "Black"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/Ai chess/components/MatchBoard.tsx",
+                                                            lineNumber: 364,
+                                                            columnNumber: 37
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: "text-sm font-medium text-white text-right",
+                                                            children: getShortModelName(model2)
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/Ai chess/components/MatchBoard.tsx",
+                                                            lineNumber: 365,
+                                                            columnNumber: 37
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
                                                     fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                                    lineNumber: 285,
+                                                    lineNumber: 363,
                                                     columnNumber: 33
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "text-sm font-medium text-white text-right",
-                                                    children: getShortModelName(model2)
+                                                    className: "w-8 h-8 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center",
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                        className: "w-4 h-4 text-zinc-400",
+                                                        viewBox: "0 0 24 24",
+                                                        fill: "currentColor",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
+                                                                cx: "12",
+                                                                cy: "8",
+                                                                r: "4"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/Ai chess/components/MatchBoard.tsx",
+                                                                lineNumber: 369,
+                                                                columnNumber: 41
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                                d: "M12 14c-6 0-8 3-8 6v2h16v-2c0-3-2-6-8-6z"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/Ai chess/components/MatchBoard.tsx",
+                                                                lineNumber: 369,
+                                                                columnNumber: 72
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/Ai chess/components/MatchBoard.tsx",
+                                                        lineNumber: 368,
+                                                        columnNumber: 37
+                                                    }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                                    lineNumber: 286,
+                                                    lineNumber: 367,
                                                     columnNumber: 33
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                            lineNumber: 284,
-                                            columnNumber: 29
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "w-8 h-8 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                className: "w-4 h-4 text-zinc-400",
-                                                viewBox: "0 0 24 24",
-                                                fill: "currentColor",
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
-                                                        cx: "12",
-                                                        cy: "8",
-                                                        r: "4"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                                        lineNumber: 290,
-                                                        columnNumber: 37
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                        d: "M12 14c-6 0-8 3-8 6v2h16v-2c0-3-2-6-8-6z"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                                        lineNumber: 290,
-                                                        columnNumber: 68
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                                lineNumber: 289,
-                                                columnNumber: 33
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                            lineNumber: 288,
+                                            lineNumber: 362,
                                             columnNumber: 29
                                         }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                    lineNumber: 283,
-                                    columnNumber: 25
-                                }, this)
-                            }, void 0, false, {
-                                fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                lineNumber: 282,
-                                columnNumber: 21
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                ref: scrollRef2,
-                                className: "flex-1 overflow-y-auto p-4 space-y-3 thoughts-scroll",
-                                children: [
-                                    thoughts2.map((t, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "p-3 rounded-lg bg-white/[0.02] border border-white/5",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "text-[10px] text-white/30 mb-1 text-right",
-                                                    children: [
-                                                        "Move ",
-                                                        i + 1
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                                    lineNumber: 298,
-                                                    columnNumber: 33
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                    className: "text-white/60 text-sm leading-relaxed text-right",
-                                                    children: t
-                                                }, void 0, false, {
-                                                    fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                                    lineNumber: 299,
-                                                    columnNumber: 33
-                                                }, this)
-                                            ]
-                                        }, i, true, {
-                                            fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                            lineNumber: 297,
-                                            columnNumber: 29
-                                        }, this)),
-                                    thinkingModel === getShortModelName(model2) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex items-center justify-end gap-2 text-white/40 px-3",
+                                    }, void 0, false, {
+                                        fileName: "[project]/Ai chess/components/MatchBoard.tsx",
+                                        lineNumber: 361,
+                                        columnNumber: 25
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        ref: scrollRef2,
+                                        className: "flex-1 overflow-y-auto p-4 space-y-3 thoughts-scroll",
                                         children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "text-xs",
-                                                children: "Thinking..."
-                                            }, void 0, false, {
-                                                fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                                lineNumber: 304,
-                                                columnNumber: 33
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "flex gap-1",
+                                            thoughts2.map((t, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "p-3 rounded-lg bg-white/[0.02] border border-white/5",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: "text-[10px] text-white/30 mb-1 text-right",
+                                                            children: [
+                                                                "Move ",
+                                                                i + 1
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/Ai chess/components/MatchBoard.tsx",
+                                                            lineNumber: 377,
+                                                            columnNumber: 37
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                            className: "text-white/60 text-sm leading-relaxed text-right",
+                                                            children: t
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/Ai chess/components/MatchBoard.tsx",
+                                                            lineNumber: 378,
+                                                            columnNumber: 37
+                                                        }, this)
+                                                    ]
+                                                }, i, true, {
+                                                    fileName: "[project]/Ai chess/components/MatchBoard.tsx",
+                                                    lineNumber: 376,
+                                                    columnNumber: 33
+                                                }, this)),
+                                            thinkingModel === getShortModelName(model2) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "flex items-center justify-end gap-2 text-white/40 px-3",
                                                 children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "w-1.5 h-1.5 bg-zinc-400 rounded-full thinking-dot"
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: "text-xs",
+                                                        children: "Thinking..."
                                                     }, void 0, false, {
                                                         fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                                        lineNumber: 306,
+                                                        lineNumber: 383,
                                                         columnNumber: 37
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "w-1.5 h-1.5 bg-zinc-400 rounded-full thinking-dot"
-                                                    }, void 0, false, {
+                                                        className: "flex gap-1",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "w-1.5 h-1.5 bg-zinc-400 rounded-full thinking-dot"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/Ai chess/components/MatchBoard.tsx",
+                                                                lineNumber: 385,
+                                                                columnNumber: 41
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "w-1.5 h-1.5 bg-zinc-400 rounded-full thinking-dot"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/Ai chess/components/MatchBoard.tsx",
+                                                                lineNumber: 386,
+                                                                columnNumber: 41
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "w-1.5 h-1.5 bg-zinc-400 rounded-full thinking-dot"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/Ai chess/components/MatchBoard.tsx",
+                                                                lineNumber: 387,
+                                                                columnNumber: 41
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
                                                         fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                                        lineNumber: 307,
-                                                        columnNumber: 37
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "w-1.5 h-1.5 bg-zinc-400 rounded-full thinking-dot"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                                        lineNumber: 308,
+                                                        lineNumber: 384,
                                                         columnNumber: 37
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                                lineNumber: 305,
+                                                lineNumber: 382,
                                                 columnNumber: 33
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                        lineNumber: 303,
-                                        columnNumber: 29
+                                        lineNumber: 374,
+                                        columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                                lineNumber: 295,
+                                lineNumber: 360,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                        lineNumber: 281,
+                        lineNumber: 353,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                lineNumber: 209,
+                lineNumber: 245,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "h-20 border-t border-white/5 flex items-center justify-center bg-black shrink-0",
+                className: "h-14 border-t border-white/5 flex items-center justify-center bg-black shrink-0 px-8",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "max-w-3xl text-center px-6",
+                    className: "max-w-4xl text-center",
                     children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "text-[10px] text-white/30 uppercase tracking-widest mb-1",
-                            children: "AI Commentary"
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                            className: "text-[9px] text-white/30 uppercase tracking-widest mr-3",
+                            children: "AI Commentary:"
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                            lineNumber: 319,
+                            lineNumber: 399,
                             columnNumber: 21
                         }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                            className: "text-base font-medium text-white/70 italic leading-relaxed",
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Ai__chess$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                            className: "text-sm text-white/60 italic",
                             children: commentary || "The battle begins... waiting for the first exchange."
                         }, void 0, false, {
                             fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                            lineNumber: 320,
+                            lineNumber: 400,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                    lineNumber: 318,
+                    lineNumber: 398,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-                lineNumber: 317,
+                lineNumber: 397,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Ai chess/components/MatchBoard.tsx",
-        lineNumber: 179,
+        lineNumber: 215,
         columnNumber: 9
     }, this);
 }
-_s(MatchBoard, "K2UJfbSIlkriEQpzm1lTumbuah8=");
+_s(MatchBoard, "vkbgtohAcO/xOqk3ISYo/bcg4mI=");
 _c1 = MatchBoard;
 var _c, _c1;
 __turbopack_context__.k.register(_c, "ModelIcon");

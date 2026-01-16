@@ -8,15 +8,15 @@ interface ModelSelectionProps {
 }
 
 const GROQ_MODELS = [
-    { id: "llama-3.3-70b-versatile", name: "Llama 3.3 70B", provider: "Groq", icon: "🦙", speed: "Fast" },
-    { id: "llama-3.1-8b-instant", name: "Llama 3.1 8B", provider: "Groq", icon: "🦙", speed: "Instant" },
-    { id: "mixtral-8x7b-32768", name: "Mixtral 8x7B", provider: "Groq", icon: "🔀", speed: "Fast" },
+    { id: "llama-3.3-70b-versatile", name: "Llama 3.3 70B" },
+    { id: "llama-3.1-8b-instant", name: "Llama 3.1 8B" },
+    { id: "mixtral-8x7b-32768", name: "Mixtral 8x7B" },
 ];
 
 const OPENROUTER_MODELS = [
-    { id: "google/gemini-2.0-flash-exp:free", name: "Gemini 2.0", provider: "Google", icon: "✨", speed: "Fast" },
-    { id: "anthropic/claude-3.5-sonnet", name: "Claude 3.5", provider: "Anthropic", icon: "🎭", speed: "Premium" },
-    { id: "openai/gpt-4o", name: "GPT-4o", provider: "OpenAI", icon: "🧠", speed: "Premium" },
+    { id: "google/gemini-2.0-flash-exp:free", name: "Gemini 2.0 Flash" },
+    { id: "anthropic/claude-3.5-sonnet", name: "Claude 3.5 Sonnet" },
+    { id: "openai/gpt-4o", name: "GPT-4o" },
 ];
 
 export default function ModelSelection({ apiKeys, onSubmit }: ModelSelectionProps) {
@@ -25,10 +25,6 @@ export default function ModelSelection({ apiKeys, onSubmit }: ModelSelectionProp
 
     const [model1, setModel1] = useState(availableModels[0].id);
     const [model2, setModel2] = useState(availableModels[1]?.id || availableModels[0].id);
-
-    const getModelInfo = (id: string) => [...GROQ_MODELS, ...OPENROUTER_MODELS].find(m => m.id === id);
-    const m1 = getModelInfo(model1);
-    const m2 = getModelInfo(model2);
 
     return (
         <div className="relative flex flex-col items-center justify-center min-h-screen p-4 bg-pattern">
@@ -45,7 +41,7 @@ export default function ModelSelection({ apiKeys, onSubmit }: ModelSelectionProp
                 </div>
 
                 <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
-                    <div className="w-full lg:w-80 player-card player-card-white p-6 space-y-6">
+                    <div className="w-full lg:w-80 player-card player-card-white p-6 space-y-4">
                         <div className="flex items-center gap-3">
                             <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center">
                                 <svg className="w-5 h-5 text-black" viewBox="0 0 24 24" fill="currentColor">
@@ -58,14 +54,13 @@ export default function ModelSelection({ apiKeys, onSubmit }: ModelSelectionProp
                             </div>
                         </div>
                         <select value={model1} onChange={(e) => setModel1(e.target.value)} className="premium-select w-full p-4 text-white text-sm">
-                            {availableModels.map((m) => <option key={m.id} value={m.id}>{m.icon} {m.name}</option>)}
+                            {availableModels.map((m) => <option key={m.id} value={m.id}>{m.name}</option>)}
                         </select>
-                        {m1 && <div className="flex items-center justify-between text-xs"><span className="text-zinc-500">{m1.provider}</span><span className={`px-2 py-0.5 rounded-full text-[10px] ${m1.speed === 'Instant' ? 'bg-emerald-500/20 text-emerald-400' : m1.speed === 'Fast' ? 'bg-blue-500/20 text-blue-400' : 'bg-purple-500/20 text-purple-400'}`}>{m1.speed}</span></div>}
                     </div>
 
                     <div className="vs-badge shrink-0">VS</div>
 
-                    <div className="w-full lg:w-80 player-card player-card-black p-6 space-y-6">
+                    <div className="w-full lg:w-80 player-card player-card-black p-6 space-y-4">
                         <div className="flex items-center gap-3">
                             <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center border border-zinc-700">
                                 <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
@@ -78,9 +73,8 @@ export default function ModelSelection({ apiKeys, onSubmit }: ModelSelectionProp
                             </div>
                         </div>
                         <select value={model2} onChange={(e) => setModel2(e.target.value)} className="premium-select w-full p-4 text-white text-sm">
-                            {availableModels.map((m) => <option key={m.id} value={m.id}>{m.icon} {m.name}</option>)}
+                            {availableModels.map((m) => <option key={m.id} value={m.id}>{m.name}</option>)}
                         </select>
-                        {m2 && <div className="flex items-center justify-between text-xs"><span className="text-zinc-500">{m2.provider}</span><span className={`px-2 py-0.5 rounded-full text-[10px] ${m2.speed === 'Instant' ? 'bg-emerald-500/20 text-emerald-400' : m2.speed === 'Fast' ? 'bg-blue-500/20 text-blue-400' : 'bg-purple-500/20 text-purple-400'}`}>{m2.speed}</span></div>}
                     </div>
                 </div>
 
